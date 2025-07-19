@@ -1,0 +1,97 @@
+
+✅ 1. Preparation
+This is what you do before any incident happens.
+
+🔹 Goals:
+Build an incident response plan
+
+Harden systems (firewalls, patching, disable unused ports)
+
+Train your team or yourself
+
+Collect baseline logs (Sysmon, Windows Events)
+
+Set up tools: SIEM (like Wazuh), antivirus, EDR (like CrowdStrike)
+
+🧠 Real Example:
+You install Sysmon to track process creation and network events. You also prepare a script to isolate a system, so you don’t waste time during an attack.
+
+✅ 2. Identification
+This is where you realize “Something is wrong.”
+
+🔹 Goals:
+Detect an anomaly or alert
+
+Confirm it’s not a false positive
+
+Classify the incident (malware, DDoS, data leak, insider attack)
+
+🔍 How?
+From alerts (SIEM/AV)
+
+From logs (failed logins, weird traffic)
+
+From users reporting issues
+
+🧠 Real Example:
+Your log monitoring system shows 50 failed SSH login attempts in 2 minutes → You check and find they’re coming from suspicious IPs → Brute-force attempt
+
+✅ 3. Containment
+Now that you found the threat, you stop it from spreading or causing more damage.
+
+🔹 Goals:
+Quarantine the system or account
+
+Disconnect infected machines from the network
+
+Block malicious IPs or domains
+
+Capture volatile data (RAM, logs, running processes)
+
+🧠 Real Example:
+You block an IP in the firewall, isolate the affected laptop from Wi-Fi, and use taskkill or Process Explorer to terminate the malicious EXE.
+
+✅ 4. Eradication
+Now you clean up the mess the attacker left.
+
+🔹 Goals:
+Remove malware
+
+Delete backdoors and persistence mechanisms
+
+Patch vulnerabilities
+
+Reset passwords
+
+🧠 Real Example:
+You remove a malicious registry startup key, delete the malware file, and uninstall a fake app the attacker installed.
+
+✅ 5. Recovery
+This is where you bring the system back to safe working condition.
+
+🔹 Goals:
+Restore clean backup
+
+Monitor the system for reinfection
+
+Slowly bring it back online
+
+🧠 Real Example:
+You restore a Windows server from a backup image taken 2 days before the attack and watch the network traffic for anomalies over 48 hours.
+
+✅ 6. Lessons Learned
+After everything is over — analyze what went wrong and how to prevent it in the future.
+
+🔹 Goals:
+Write a report (like what you’re building now)
+
+Share Indicators of Compromise (IP, hash, domains)
+
+Update detection tools
+
+Improve your IR plan
+
+Conduct a team debrief
+
+🧠 Real Example:
+You learn the user clicked a phishing link. You add that domain to your blocklist and train the user again. You also add email sandboxing to detect similar payloads in future.

@@ -1,0 +1,87 @@
+Day 9 — XSS Payload Injector Project Report
+===========================================
+
+Author: Syed Raihaan
+Date: [Add today’s date here]
+
+----------------------------------------------------
+✅ What was done:
+----------------------------------------------------
+
+• I set up DVWA (Damn Vulnerable Web Application) using Docker.
+• I opened DVWA in the Burp Suite browser at http://127.0.0.1:8080.
+• I logged in and navigated to the "Reflected XSS" vulnerability page.
+• I intercepted a real vulnerable request to understand how it works.
+• I noted the GET request format and cookies (PHPSESSID, security).
+• I wrote a Python script (`payload_injector.py`) to automate sending multiple XSS payloads to the vulnerable parameter.
+• I ran the script in my Windows VM.
+• The script successfully injected payloads, captured responses, and saved them as `.html` files.
+• I verified the responses by opening the HTML files to see the payload execution.
+
+----------------------------------------------------
+✅ Why automation is useful:
+----------------------------------------------------
+
+• While you can test a single payload manually in the browser URL bar, automation lets you:
+   - Fire multiple payloads fast.
+   - Check response differences automatically.
+   - Save results for reporting.
+   - Practice building simple exploitation tools.
+   - Use the same logic for real bug bounty or pentest situations.
+
+This improves my Python, HTTP request crafting, and web vulnerability testing skills.
+
+----------------------------------------------------
+✅ Python Payload Injector Script:
+----------------------------------------------------
+
+**Key points:**
+- Uses `requests` to send GET requests.
+- Handles cookies & headers.
+- Loops through multiple payloads.
+- Saves server responses to files for easy analysis.
+
+----------------------------------------------------
+✅ Final README for GitHub:
+----------------------------------------------------
+
+# XSS Payload Injector
+
+## 🚀 Description
+
+This is a simple **Python automation script** to demonstrate how to inject **Reflected XSS payloads** into a vulnerable web application such as **DVWA** (Damn Vulnerable Web App).  
+It sends test payloads, captures responses, and saves them as HTML files for analysis.
+
+---
+
+## ⚙️ How it works
+
+1. **Target:** The script targets the `xss_r` (Reflected XSS) page in DVWA by default.  
+2. **Cookies:** You must provide a valid `PHPSESSID` and security level.  
+3. **Payloads:** A list of common XSS payloads is injected into the `name` parameter.  
+4. **Responses:** The script saves the HTML response for each payload so you can verify whether the payload executes in the browser.
+
+---
+
+## ✅ Requirements
+
+- Python 3  
+- `requests` library
+
+Install dependencies:
+
+```bash
+pip install requests
+Usage
+Edit config in payload_injector.py:
+
+TARGET_URL — your DVWA or test lab URL.
+
+COOKIES — set your PHPSESSID and security level.
+
+HEADERS — adjust if needed.
+Run the script:python payload_injector.py
+
+Open the output .html files:
+
+Check the files in your browser to see if the payload executed.
